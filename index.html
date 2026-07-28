@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO 27001 + SOC 2 + AI Governance — Трекер прогресу</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --bg:#0f1420;
+    --bg-card:#171e2e;
+    --bg-card-hover:#1d2536;
+    --border:#2a3348;
+    --text:#e7ebf3;
+    --text-dim:#9aa5bd;
+    --accent:#5b8def;
+    --accent-2:#7c5cff;
+    --green:#3ecf8e;
+    --amber:#f5b942;
+    --red:#ef6461;
+    --radius:14px;
+    --shadow: 0 4px 18px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:linear-gradient(180deg,#0b0f19,#0f1420 400px);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    padding-bottom:80px;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+
+  header.top{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(15,20,32,.85);
+    border-bottom:1px solid var(--border);
+  }
+  header.top .inner{padding:16px 20px;display:flex;flex-direction:column;gap:10px;max-width:920px;margin:0 auto;}
+  .title-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  h1{font-size:1.05rem;margin:0;font-weight:600;letter-spacing:.2px;}
+  .pct{font-size:1.05rem;font-weight:700;color:var(--accent);}
+  .bar{height:8px;border-radius:99px;background:var(--bg-card);overflow:hidden;border:1px solid var(--border);}
+  .bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .4s ease;}
+
+  .hero{padding:34px 0 10px;}
+  .hero h2{font-size:1.7rem;margin:0 0 6px;}
+  .hero p{color:var(--text-dim);margin:0 0 18px;}
+  .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-bottom:26px;}
+  .meta-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;}
+  .meta-card .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:4px;}
+  .meta-card .v{font-size:.92rem;}
+
+  .phases-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:30px;}
+  .phase-chip{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;transition:.15s;}
+  .phase-chip:hover{background:var(--bg-card-hover);border-color:var(--accent);}
+  .phase-chip .num{font-size:.72rem;color:var(--accent);font-weight:700;letter-spacing:.05em;}
+  .phase-chip .name{font-weight:600;margin:4px 0 2px;font-size:.92rem;}
+  .phase-chip .weeks{font-size:.78rem;color:var(--text-dim);}
+  .phase-chip .mini-bar{margin-top:8px;height:5px;border-radius:99px;background:#0e1420;overflow:hidden;}
+  .phase-chip .mini-fill{height:100%;background:var(--green);}
+
+  section.block{margin:36px 0;}
+  h3.section-title{font-size:1.15rem;margin:0 0 14px;display:flex;align-items:center;gap:8px;}
+  h3.section-title .badge{font-size:.68rem;background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);padding:2px 8px;border-radius:99px;font-weight:600;}
+
+  .week-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow);}
+  .week-head{padding:16px 18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:12px;}
+  .week-head:hover{background:var(--bg-card-hover);}
+  .week-head .left{display:flex;flex-direction:column;gap:2px;}
+  .week-head .wk-label{font-size:.72rem;color:var(--accent);font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
+  .week-head .wk-title{font-weight:600;font-size:.98rem;}
+  .week-head .wk-sub{font-size:.8rem;color:var(--text-dim);}
+  .week-head .right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .week-progress{font-size:.78rem;color:var(--text-dim);white-space:nowrap;}
+  .chevron{transition:transform .2s;color:var(--text-dim);}
+  .week-card.open .chevron{transform:rotate(180deg);}
+  .week-body{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .week-card.open .week-body{max-height:4000px;}
+  .week-body-inner{padding:0 18px 16px;}
+
+  .tip{background:rgba(91,141,239,.08);border:1px solid rgba(91,141,239,.25);border-radius:10px;padding:10px 12px;font-size:.83rem;color:#c7d6f7;margin-bottom:14px;}
+  .tip b{color:var(--accent);}
+
+  .day-item{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--border);}
+  .day-item:first-child{border-top:none;}
+  .day-item input[type=checkbox]{
+    appearance:none;-webkit-appearance:none;
+    width:20px;height:20px;min-width:20px;border-radius:6px;
+    border:1.5px solid var(--border);background:var(--bg);
+    cursor:pointer;margin-top:2px;position:relative;transition:.15s;
+  }
+  .day-item input[type=checkbox]:checked{background:var(--green);border-color:var(--green);}
+  .day-item input[type=checkbox]:checked::after{
+    content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+    border:solid #0b0f19;border-width:0 2px 2px 0;transform:rotate(45deg);
+  }
+  .day-content{flex:1;}
+  .day-label{font-size:.7rem;color:var(--accent-2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+  .day-title{font-weight:600;font-size:.92rem;}
+  .day-item.done .day-title{color:var(--text-dim);text-decoration:line-through;text-decoration-color:var(--border);}
+  .day-sub{font-size:.83rem;color:var(--text-dim);margin-top:2px;}
+  .day-links{margin-top:6px;display:flex;flex-wrap:wrap;gap:8px;}
+  .day-links a{font-size:.78rem;background:var(--bg);border:1px solid var(--border);padding:3px 9px;border-radius:99px;}
+  .day-links a:hover{border-color:var(--accent);text-decoration:none;}
+
+  .checklist-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+  .cl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;}
+  .cl-card h4{margin:0 0 10px;font-size:.92rem;}
+  .cl-item{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.86rem;}
+  .cl-item input{margin-top:3px;}
+  .cl-item.done label{color:var(--text-dim);text-decoration:line-through;text-decoration-color:var(--border);}
+  .cl-item label{cursor:pointer;flex:1;}
+
+  table.info{width:100%;border-collapse:collapse;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;font-size:.86rem;}
+  table.info th,table.info td{text-align:left;padding:9px 12px;border-top:1px solid var(--border);}
+  table.info th{background:var(--bg-card-hover);color:var(--text-dim);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;}
+  table.info tr:first-child td{border-top:none;}
+  .yes{color:var(--green);font-weight:700;}
+  .no{color:var(--text-dim);}
+
+  footer{text-align:center;color:var(--text-dim);font-size:.78rem;margin-top:50px;padding-top:20px;border-top:1px solid var(--border);}
+  footer button{background:none;border:1px solid var(--border);color:var(--text-dim);border-radius:8px;padding:5px 12px;font-size:.75rem;cursor:pointer;margin-top:10px;}
+  footer button:hover{border-color:var(--red);color:var(--red);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="title-row">
+      <h1 id="planTitle">Трекер прогресу</h1>
+      <span class="pct" id="pctLabel">0%</span>
+    </div>
+    <div class="bar"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h2 id="heroTitle">План навчання</h2>
+    <p id="heroSubtitle"></p>
+
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="phases-row" id="phasesRow"></div>
+  </div>
+
+  <section class="block">
+    <h3 class="section-title">Тижні <span class="badge" id="weeksBadge"></span></h3>
+    <div id="weeksContainer"></div>
+  </section>
+
+  <section class="block">
+    <h3 class="section-title">Trust Service Criteria (SOC 2)</h3>
+    <table class="info" id="tscTable"></table>
+  </section>
+
+  <section class="block">
+    <h3 class="section-title">SOC 2 vs ISO 27001</h3>
+    <table class="info" id="compareTable"></table>
+  </section>
+
+  <section class="block">
+    <h3 class="section-title">Загальний чекліст</h3>
+    <div class="checklist-groups" id="checklistGroups"></div>
+  </section>
+
+  <section class="block">
+    <h3 class="section-title">Кар'єрний трек</h3>
+    <table class="info" id="careerTable"></table>
+  </section>
+
+  <footer>
+    Трекер прогресу · дані на основі персонального плану навчання ·
+    прогрес зберігається локально у браузері
+    <br>
+    <button onclick="resetProgress()">Скинути прогрес</button>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+const STORAGE_KEY = 'iso27001-soc2-tracker-progress-v1';
+let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+function resetProgress(){
+  if(confirm('Скинути весь прогрес?')){
+    state = {};
+    saveState();
+    render();
+  }
+}
+
+function ensureUrl(u){
+  if(!u) return '#';
+  if(u.startsWith('http')) return u;
+  return 'https://' + u;
+}
+
+function phaseOfWeek(w){
+  const n = parseInt(w, 10);
+  if(n <= 4) return 0;
+  if(n <= 7) return 1;
+  return 2;
+}
+
+const PHASE_NAMES = ['ISO 27001 Foundation', 'SOC 2', 'GRC + AI Governance'];
+const PHASE_WEEKS = [[1,4],[5,7],[8,10]];
+
+function allDayIds(){
+  const ids = [];
+  PLAN.weeks.forEach(w => w.days.forEach((d,i) => ids.push('day_'+w.week+'_'+i)));
+  Object.entries(PLAN.checklist).forEach(([cat, items]) => {
+    items.forEach((_,i) => ids.push('cl_'+cat+'_'+i));
+  });
+  return ids;
+}
+
+function computeProgress(ids){
+  const done = ids.filter(id => state[id]).length;
+  return ids.length ? Math.round(done/ids.length*100) : 0;
+}
+
+function render(){
+  document.getElementById('planTitle').textContent = PLAN.meta.title;
+  document.getElementById('heroTitle').textContent = PLAN.meta.title;
+  document.getElementById('heroSubtitle').textContent = PLAN.meta.subtitle;
+
+  const allIds = allDayIds();
+  const pct = computeProgress(allIds);
+  document.getElementById('pctLabel').textContent = pct + '%';
+  document.getElementById('barFill').style.width = pct + '%';
+
+  // meta grid
+  const metaGrid = document.getElementById('metaGrid');
+  metaGrid.innerHTML = '';
+  PLAN.meta.overview.forEach(([k,v]) => {
+    const div = document.createElement('div');
+    div.className = 'meta-card';
+    div.innerHTML = `<div class="k">${k}</div><div class="v">${v}</div>`;
+    metaGrid.appendChild(div);
+  });
+
+  // phases row
+  const phasesRow = document.getElementById('phasesRow');
+  phasesRow.innerHTML = '';
+  PHASE_NAMES.forEach((name, idx) => {
+    const [wStart, wEnd] = PHASE_WEEKS[idx];
+    const phaseIds = [];
+    PLAN.weeks.filter(w => phaseOfWeek(w.week) === idx).forEach(w => {
+      w.days.forEach((d,i) => phaseIds.push('day_'+w.week+'_'+i));
+    });
+    const phasePct = computeProgress(phaseIds);
+    const chip = document.createElement('div');
+    chip.className = 'phase-chip';
+    chip.innerHTML = `
+      <div class="num">ФАЗА ${idx+1}</div>
+      <div class="name">${name}</div>
+      <div class="weeks">Тижні ${wStart}–${wEnd} · ${phasePct}%</div>
+      <div class="mini-bar"><div class="mini-fill" style="width:${phasePct}%"></div></div>
+    `;
+    chip.onclick = () => {
+      const el = document.getElementById('week-'+wStart);
+      if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); el.classList.add('open'); }
+    };
+    phasesRow.appendChild(chip);
+  });
+
+  document.getElementById('weeksBadge').textContent = PLAN.weeks.length + ' тижнів';
+
+  // weeks
+  const weeksContainer = document.getElementById('weeksContainer');
+  weeksContainer.innerHTML = '';
+  PLAN.weeks.forEach(w => {
+    const wIds = w.days.map((d,i) => 'day_'+w.week+'_'+i);
+    const wPct = computeProgress(wIds);
+    const card = document.createElement('div');
+    card.className = 'week-card';
+    card.id = 'week-'+w.week;
+
+    const tip = PLAN.tips[w.week] ? `<div class="tip"><b>Порада:</b> ${PLAN.tips[w.week]}</div>` : '';
+    const keyNote = (w.week === '5' && PLAN.keyLinkNote) ? `<div class="tip"><b>Зв'язок:</b> ${PLAN.keyLinkNote.replace("Ключовий зв'язок: ", '')}</div>` : '';
+
+    const daysHtml = w.days.map((d,i) => {
+      const id = 'day_'+w.week+'_'+i;
+      const done = !!state[id];
+      const links = d.links.map(l => `<a href="${ensureUrl(l.url)}" target="_blank" rel="noopener">${l.label} ↗</a>`).join('');
+      return `
+        <div class="day-item ${done?'done':''}" data-id="${id}">
+          <input type="checkbox" ${done?'checked':''} data-id="${id}">
+          <div class="day-content">
+            <div class="day-label">${d.day}</div>
+            <div class="day-title">${d.title}</div>
+            ${d.subtitle ? `<div class="day-sub">${d.subtitle}</div>` : ''}
+            ${links ? `<div class="day-links">${links}</div>` : ''}
+          </div>
+        </div>`;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="week-head">
+        <div class="left">
+          <div class="wk-label">Тиждень ${w.week} · ${w.dates}</div>
+          <div class="wk-title">${w.title}</div>
+          <div class="wk-sub">${w.subtitle}</div>
+        </div>
+        <div class="right">
+          <div class="week-progress">${wPct}%</div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="week-body"><div class="week-body-inner">
+        ${tip}${keyNote}
+        ${daysHtml}
+      </div></div>
+    `;
+
+    card.querySelector('.week-head').addEventListener('click', (e) => {
+      card.classList.toggle('open');
+    });
+
+    weeksContainer.appendChild(card);
+  });
+
+  // checkbox listeners
+  document.querySelectorAll('.day-item input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('click', (e) => e.stopPropagation());
+    cb.addEventListener('change', (e) => {
+      const id = e.target.getAttribute('data-id');
+      state[id] = e.target.checked;
+      saveState();
+      render();
+      // reopen the week that was being edited
+      document.getElementById('week-' + id.split('_')[1])?.classList.add('open');
+    });
+  });
+
+  // TSC table
+  const tscTable = document.getElementById('tscTable');
+  tscTable.innerHTML = `<tr><th>Trust Service Criteria</th><th>Обов'язковий?</th><th>Суть</th></tr>` +
+    PLAN.tsc.map(row => `<tr><td>${row[0]}</td><td class="${row[1]==='ТАК'?'yes':'no'}">${row[1]}</td><td>${row[2]}</td></tr>`).join('');
+
+  // compare table
+  const compareTable = document.getElementById('compareTable');
+  const header = PLAN.compare[0];
+  compareTable.innerHTML = `<tr><th>${header[0]||''}</th><th>${header[1]}</th><th>${header[2]}</th></tr>` +
+    PLAN.compare.slice(1).map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join('');
+
+  // checklist groups
+  const clGroups = document.getElementById('checklistGroups');
+  clGroups.innerHTML = '';
+  Object.entries(PLAN.checklist).forEach(([cat, items]) => {
+    const card = document.createElement('div');
+    card.className = 'cl-card';
+    const itemsHtml = items.map((it, i) => {
+      const id = 'cl_'+cat+'_'+i;
+      const done = !!state[id];
+      return `
+        <div class="cl-item ${done?'done':''}">
+          <input type="checkbox" id="${id}" ${done?'checked':''} data-id="${id}">
+          <label for="${id}">${it}</label>
+        </div>`;
+    }).join('');
+    card.innerHTML = `<h4>${cat}</h4>${itemsHtml}`;
+    clGroups.appendChild(card);
+  });
+  document.querySelectorAll('.cl-card input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      state[e.target.getAttribute('data-id')] = e.target.checked;
+      saveState();
+      render();
+    });
+  });
+
+  // career table
+  const careerTable = document.getElementById('careerTable');
+  careerTable.innerHTML = `<tr><th>Горизонт</th><th>Статус / Ціль</th></tr>` +
+    PLAN.career.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`).join('');
+}
+
+render();
+
+// open the first not-fully-done week by default
+(function(){
+  for(const w of PLAN.weeks){
+    const ids = w.days.map((d,i) => 'day_'+w.week+'_'+i);
+    const pct = computeProgress(ids);
+    if(pct < 100){
+      document.getElementById('week-'+w.week)?.classList.add('open');
+      break;
+    }
+  }
+})();
+</script>
+</body>
+</html>
