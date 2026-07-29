@@ -1,15 +1,15 @@
 const PLAN = {
  "meta": {
   "title": "ISO 27001 Foundation + SOC 2 + AI Governance",
-  "subtitle": "10 тижнів навчання",
+  "subtitle": "15 тижнів навчання",
   "overview": [
    [
     "Тривалість",
-    "10 тижнів (5 трав — 13 лип 2025)"
+    "15 тижнів (3 серпня 2026 — 15 листопада 2026)"
    ],
    [
     "Навантаження",
-    "~1–1.5 год на день, 5–7 днів на тиждень"
+    "~1 год на заняття, 3 заняття на тиждень"
    ],
    [
     "Цільові іспити",
@@ -31,19 +31,19 @@ const PLAN = {
   "phases": [
    [
     "1 — ISO 27001",
-    "1–4",
+    "1-7",
     "Candidate Handbook, клаузи 4–10, Annex A, пробні тести",
     "Здача іспиту Foundation"
    ],
    [
     "2 — SOC 2",
-    "5–7",
+    "8-11",
     "TSC, Common Criteria, Access Controls, участь у проєкті",
     "Роль у SOC 2 підготовці"
    ],
    [
     "3 — GRC + AI",
-    "8–10",
+    "12-15",
     "NIST CSF, EU AI Act, ISO 42001, NIST AI RMF",
     "AI Governance базис"
    ]
@@ -126,21 +126,15 @@ const PLAN = {
    "CISA + CRISC + AIGP + EU AI Act compliance"
   ]
  ],
- "tips": {
-  "1": "Мета — загальний огляд. Не намагайся запам'ятати всі деталі — спочатку лише структура.",
-  "2": "Питання на іспиті: \"що організація SHALL робити згідно клаузи X?\" — фокусуйся на обов'язкових вимогах (shall vs should).",
-  "3": "Не треба знати всі 93 контролі напам'ять — важлива логіка: який контроль до якого ризику."
- },
- "keyLinkNote": "Ключовий зв'язок: Твій IAM досвід = CC6 (logical access controls). Це серцевина Security критерію SOC 2.",
  "weeks": [
   {
    "week": "1",
-   "dates": "5–11 трав",
-   "title": "Структура іспиту + базові концепції",
-   "subtitle": "Candidate Handbook, CIA triad, сімейство ISO 27000",
+   "dates": "3 серп - 9 серп",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "PECB Candidate Handbook Foundation · CIA triad, ISMS, терміни ISO 27000 · Сімейство ISO 27000 (27001, 27002, 27003, 27005)",
    "days": [
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 1",
      "title": "PECB Candidate Handbook Foundation",
      "subtitle": "Вивчи структуру іспиту, домени, правила складання",
      "links": [
@@ -155,7 +149,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср",
+     "day": "Заняття 2",
      "title": "CIA triad, ISMS, терміни ISO 27000",
      "subtitle": "Confidentiality / Integrity / Availability — офіційні визначення",
      "links": [
@@ -170,7 +164,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Чт",
+     "day": "Заняття 3",
      "title": "Сімейство ISO 27000 (27001, 27002, 27003, 27005)",
      "subtitle": "Що для чого — логіка зв'язків між стандартами",
      "links": [
@@ -183,9 +177,17 @@ const PLAN = {
        "url": "iso.org/isoiec-27001-information-security.html"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "2",
+   "dates": "10 серп - 16 серп",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Udemy: ISO 27001 for busy learners (2 год) · Flashcards + власний конспект · Клауза 4 — Context of the organization",
+   "days": [
     {
-     "day": "Пт–Сб",
+     "day": "Заняття 1",
      "title": "Udemy: ISO 27001 for busy learners (2 год)",
      "subtitle": "Перше повне ознайомлення — без зупинок на деталях",
      "links": [
@@ -200,7 +202,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Нд",
+     "day": "Заняття 2",
      "title": "Flashcards + власний конспект",
      "subtitle": "Термін → визначення своїми словами",
      "links": [
@@ -209,17 +211,9 @@ const PLAN = {
        "url": "quizlet.com/search?query=ISO+27001+foundation&type=sets"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "2",
-   "dates": "12–18 трав",
-   "title": "Клаузи ISO 27001:2022 (4–10)",
-   "subtitle": "Контекст, лідерство, планування, підтримка, операції, оцінка, покращення",
-   "days": [
+    },
     {
-     "day": "Пн",
+     "day": "Заняття 3",
      "title": "Клауза 4 — Context of the organization",
      "subtitle": "Внутрішній/зовнішній контекст, зацікавлені сторони, скоуп ISMS",
      "links": [
@@ -232,9 +226,17 @@ const PLAN = {
        "url": "youtube.com/results?search_query=ISO+27001+clause+4+context+organization"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "3",
+   "dates": "17 серп - 23 серп",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Клауза 5 + 6 — Leadership + Planning · Клауза 7 + 8 — Support + Operation · Клауза 9 + 10 — Performance + Improvement",
+   "days": [
     {
-     "day": "Вт",
+     "day": "Заняття 1",
      "title": "Клауза 5 + 6 — Leadership + Planning",
      "subtitle": "Політики, ролі, risk assessment, Statement of Applicability (SoA)",
      "links": [
@@ -253,7 +255,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср",
+     "day": "Заняття 2",
      "title": "Клауза 7 + 8 — Support + Operation",
      "subtitle": "Ресурси, компетенції, комунікація, документація, операційне планування",
      "links": [
@@ -268,7 +270,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Чт",
+     "day": "Заняття 3",
      "title": "Клауза 9 + 10 — Performance + Improvement",
      "subtitle": "Моніторинг, внутрішній аудит, management review, коригувальні дії",
      "links": [
@@ -281,9 +283,17 @@ const PLAN = {
        "url": "advisera.com/27001academy/iso-27001-clause-10-improvement/"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "4",
+   "dates": "24 серп - 30 серп",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Перший пробний тест · Annex A — структура (2022 vs 2013) · A.5 Organizational + A.6 People controls",
+   "days": [
     {
-     "day": "Пт–Нд",
+     "day": "Заняття 1",
      "title": "Перший пробний тест",
      "subtitle": "Без підказок. Запиши де помилки — повернешся в тижні 4",
      "links": [
@@ -296,17 +306,9 @@ const PLAN = {
        "url": "udemy.com/course/iso-27001-foundation-practice-test-p/"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "3",
-   "dates": "19–25 трав",
-   "title": "Annex A + ризик-менеджмент",
-   "subtitle": "93 контролі, 4 категорії, ISO 27002, risk treatment options",
-   "days": [
+    },
     {
-     "day": "Пн",
+     "day": "Заняття 2",
      "title": "Annex A — структура (2022 vs 2013)",
      "subtitle": "4 категорії: organizational, people, physical, technological",
      "links": [
@@ -325,7 +327,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Вт–Ср",
+     "day": "Заняття 3",
      "title": "A.5 Organizational + A.6 People controls",
      "subtitle": "Політики, ролі, screening, remote work, термінація",
      "links": [
@@ -338,9 +340,17 @@ const PLAN = {
        "url": "isms.online/iso-27001/annex-a/6-people-controls/"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "5",
+   "dates": "31 серп - 6 вер",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "A.7 Physical + A.8 Technological controls · Risk assessment + risk treatment · Другий пробний тест з таймером",
+   "days": [
     {
-     "day": "Чт",
+     "day": "Заняття 1",
      "title": "A.7 Physical + A.8 Technological controls",
      "subtitle": "Фізична безпека, шифрування, контроль доступу, моніторинг",
      "links": [
@@ -355,7 +365,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Пт",
+     "day": "Заняття 2",
      "title": "Risk assessment + risk treatment",
      "subtitle": "Avoid / mitigate / transfer / accept — логіка вибору опцій",
      "links": [
@@ -374,7 +384,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Сб–Нд",
+     "day": "Заняття 3",
      "title": "Другий пробний тест з таймером",
      "subtitle": "Симулюй реальний іспит — без пауз",
      "links": [
@@ -391,13 +401,13 @@ const PLAN = {
    ]
   },
   {
-   "week": "4",
-   "dates": "26 трав–1 черв",
-   "title": "Фінальне повторення + іспит ISO 27001 Foundation",
-   "subtitle": "Слабкі місця, open-book підготовка, здача іспиту",
+   "week": "6",
+   "dates": "7 вер - 13 вер",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Повторення слабких клауз · Підготовка open-book матеріалів · Фінальний пробний іспит ×2",
    "days": [
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 1",
      "title": "Повторення слабких клауз",
      "subtitle": "Тільки теми де були помилки в тестах",
      "links": [
@@ -412,7 +422,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср",
+     "day": "Заняття 2",
      "title": "Підготовка open-book матеріалів",
      "subtitle": "Роздрукуй Handbook + конспект. Зроби власний індекс сторінок",
      "links": [
@@ -427,7 +437,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Чт–Пт",
+     "day": "Заняття 3",
      "title": "Фінальний пробний іспит ×2",
      "subtitle": "Ціль: стабільно 75–80%+",
      "links": [
@@ -440,9 +450,17 @@ const PLAN = {
        "url": "quizlet.com/search?query=ISO+27001+foundation&type=sets"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "7",
+   "dates": "14 вер - 20 вер",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "ISO 27000 Glossary — фінальний огляд · 🎯 ІСПИТ або відпочинок",
+   "days": [
     {
-     "day": "Сб",
+     "day": "Заняття 1",
      "title": "ISO 27000 Glossary — фінальний огляд",
      "subtitle": "Офіційні визначення термінів які часто плутають",
      "links": [
@@ -453,7 +471,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Нд",
+     "day": "Заняття 2",
      "title": "🎯 ІСПИТ або відпочинок",
      "subtitle": "Перевір деталі іспиту в PECB профілі. Прийди за 30 хв",
      "links": [
@@ -466,13 +484,13 @@ const PLAN = {
    ]
   },
   {
-   "week": "5",
-   "dates": "2–8 черв",
-   "title": "SOC 2 фундамент — що це і як працює",
-   "subtitle": "AICPA, Trust Service Criteria, Type I vs Type II",
+   "week": "8",
+   "dates": "21 вер - 27 вер",
+   "title": "SOC 2",
+   "subtitle": "SOC 2 overview: AICPA, TSC, Type I vs Type II · 5 Trust Service Criteria детально · Common Criteria (CC) — Security детально",
    "days": [
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 1",
      "title": "SOC 2 overview: AICPA, TSC, Type I vs Type II",
      "subtitle": "Що перевіряє аудитор, чим відрізняється від ISO 27001",
      "links": [
@@ -491,7 +509,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср",
+     "day": "Заняття 2",
      "title": "5 Trust Service Criteria детально",
      "subtitle": "Security (обов'язковий), Availability, Confidentiality, Processing Integrity, Privacy",
      "links": [
@@ -506,7 +524,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Чт",
+     "day": "Заняття 3",
      "title": "Common Criteria (CC) — Security детально",
      "subtitle": "CC6 (access control), CC7 (monitoring), CC8 (change management) — твоя зона",
      "links": [
@@ -519,9 +537,17 @@ const PLAN = {
        "url": "drata.com/blog/soc-2-common-criteria"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "9",
+   "dates": "28 вер - 4 жовт",
+   "title": "SOC 2",
+   "subtitle": "SOC 2 vs ISO 27001 — глибоке порівняння · Gap assessment — як це робиться · Evidence collection — що збирати і як",
+   "days": [
     {
-     "day": "Пт–Нд",
+     "day": "Заняття 1",
      "title": "SOC 2 vs ISO 27001 — глибоке порівняння",
      "subtitle": "Що перетинається, що можна перевикористати з ISO 27001",
      "links": [
@@ -534,17 +560,9 @@ const PLAN = {
        "url": "udemy.com/course/soc-2-compliance-a-practical-guide/"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "6",
-   "dates": "9–15 черв",
-   "title": "SOC 2 підготовка: процеси та докази",
-   "subtitle": "Gap assessment, evidence collection, обов'язкові policies",
-   "days": [
+    },
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 2",
      "title": "Gap assessment — як це робиться",
      "subtitle": "Що вже є в організації vs що потрібно для SOC 2",
      "links": [
@@ -559,7 +577,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср",
+     "day": "Заняття 3",
      "title": "Evidence collection — що збирати і як",
      "subtitle": "Скриншоти, логи, access reviews, policy docs — формати доказів",
      "links": [
@@ -572,9 +590,17 @@ const PLAN = {
        "url": "drata.com/blog/soc-2-audit-evidence"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "10",
+   "dates": "5 жовт - 11 жовт",
+   "title": "SOC 2",
+   "subtitle": "Обов'язкові policies для SOC 2 · ⚡ Пропозиція участі у SOC 2 проєкті · Access Control вимоги SOC 2 (CC6)",
+   "days": [
     {
-     "day": "Чт",
+     "day": "Заняття 1",
      "title": "Обов'язкові policies для SOC 2",
      "subtitle": "Information Security Policy, Access Control Policy, Incident Response",
      "links": [
@@ -589,7 +615,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Пт–Нд",
+     "day": "Заняття 2",
      "title": "⚡ Пропозиція участі у SOC 2 проєкті",
      "subtitle": "Підготуй і запропонуй свою роль: Access Controls + Jira tracking",
      "links": [
@@ -598,17 +624,9 @@ const PLAN = {
        "url": "vanta.com/resources/soc-2-project-plan"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "7",
-   "dates": "16–22 черв",
-   "title": "Access Controls + Vendor Management",
-   "subtitle": "Твоя зона участі у реальному проєкті BetterMe",
-   "days": [
+    },
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 3",
      "title": "Access Control вимоги SOC 2 (CC6)",
      "subtitle": "Provisioning, deprovisioning, MFA, access reviews — що хоче аудитор",
      "links": [
@@ -621,9 +639,17 @@ const PLAN = {
        "url": "drata.com/blog/logical-access-controls"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "11",
+   "dates": "12 жовт - 18 жовт",
+   "title": "SOC 2",
+   "subtitle": "Vendor Management для SOC 2 · Jira проєкт для SOC 2 evidence tracking",
+   "days": [
     {
-     "day": "Ср–Чт",
+     "day": "Заняття 1",
      "title": "Vendor Management для SOC 2",
      "subtitle": "Third-party risk, vendor register, AI tools як vendors",
      "links": [
@@ -638,7 +664,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Пт–Нд",
+     "day": "Заняття 2",
      "title": "Jira проєкт для SOC 2 evidence tracking",
      "subtitle": "Epic = TSC criteria → Stories = контролі → Tasks = збір доказів",
      "links": [
@@ -651,13 +677,13 @@ const PLAN = {
    ]
   },
   {
-   "week": "8",
-   "dates": "23–29 черв",
-   "title": "GRC основи + CompTIA Security+ baseline",
-   "subtitle": "Governance, Risk, Compliance — NIST CSF",
+   "week": "12",
+   "dates": "19 жовт - 25 жовт",
+   "title": "GRC + AI Governance",
+   "subtitle": "GRC framework — що це і навіщо · CompTIA Security+ — Governance & Compliance домен · NIST Cybersecurity Framework огляд",
    "days": [
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 1",
      "title": "GRC framework — що це і навіщо",
      "subtitle": "Governance, Risk Management, Compliance — три стовпи",
      "links": [
@@ -672,7 +698,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср–Пт",
+     "day": "Заняття 2",
      "title": "CompTIA Security+ — Governance & Compliance домен",
      "subtitle": "Frameworks, regulations (GDPR, NIS2), compliance monitoring",
      "links": [
@@ -687,7 +713,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Сб–Нд",
+     "day": "Заняття 3",
      "title": "NIST Cybersecurity Framework огляд",
      "subtitle": "Identify / Protect / Detect / Respond / Recover",
      "links": [
@@ -704,13 +730,13 @@ const PLAN = {
    ]
   },
   {
-   "week": "9",
-   "dates": "30 черв–6 лип",
-   "title": "AI Governance + AI Security основи",
-   "subtitle": "EU AI Act, ISO 42001, NIST AI RMF",
+   "week": "13",
+   "dates": "26 жовт - 1 лист",
+   "title": "GRC + AI Governance",
+   "subtitle": "EU AI Act — структура і ключові вимоги · ISO 42001 — AI Management System · NIST AI RMF (AI Risk Management Framework)",
    "days": [
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 1",
      "title": "EU AI Act — структура і ключові вимоги",
      "subtitle": "Risk tiers: unacceptable / high / limited / minimal risk",
      "links": [
@@ -725,7 +751,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср",
+     "day": "Заняття 2",
      "title": "ISO 42001 — AI Management System",
      "subtitle": "Аналог ISO 27001 для AI — структура, вимоги, зв'язок з 27001",
      "links": [
@@ -740,7 +766,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Чт–Пт",
+     "day": "Заняття 3",
      "title": "NIST AI RMF (AI Risk Management Framework)",
      "subtitle": "Govern / Map / Measure / Manage",
      "links": [
@@ -753,9 +779,17 @@ const PLAN = {
        "url": "youtube.com/results?search_query=NIST+AI+risk+management+framework"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "14",
+   "dates": "2 лист - 8 лист",
+   "title": "GRC + AI Governance",
+   "subtitle": "AI vendors у контексті SOC 2 + ISO 27001 · Оновлення CV та LinkedIn · Вибір наступної сертифікації",
+   "days": [
     {
-     "day": "Сб–Нд",
+     "day": "Заняття 1",
      "title": "AI vendors у контексті SOC 2 + ISO 27001",
      "subtitle": "Як оцінювати AI tools як third-party risk",
      "links": [
@@ -764,17 +798,9 @@ const PLAN = {
        "url": "securiti.ai/resources/ai-governance/"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "10",
-   "dates": "7–13 лип",
-   "title": "Підсумок + кар'єрне позиціонування",
-   "subtitle": "CV, наступні сертифікації, ретроспектива",
-   "days": [
+    },
     {
-     "day": "Пн–Вт",
+     "day": "Заняття 2",
      "title": "Оновлення CV та LinkedIn",
      "subtitle": "ISO 27001 Foundation, участь у SOC 2, AI Governance базис",
      "links": [
@@ -785,7 +811,7 @@ const PLAN = {
      ]
     },
     {
-     "day": "Ср–Чт",
+     "day": "Заняття 3",
      "title": "Вибір наступної сертифікації",
      "subtitle": "CISA / ISO 27001 Lead Implementer / CompTIA Security+ / ISO 42001",
      "links": [
@@ -802,9 +828,17 @@ const PLAN = {
        "url": "pecb.com/en/education-and-certification-for-individuals/iso-iec-42001"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "15",
+   "dates": "9 лист - 15 лист",
+   "title": "GRC + AI Governance",
+   "subtitle": "Ретроспектива 10 тижнів",
+   "days": [
     {
-     "day": "Пт–Нд",
+     "day": "Заняття 1",
      "title": "Ретроспектива 10 тижнів",
      "subtitle": "Що вивчено, що застосовано, що далі",
      "links": []
@@ -837,6 +871,32 @@ const PLAN = {
   "Кар'єра": [
    "CV оновлено з новими компетенціями",
    "Обрано наступну сертифікацію"
+  ]
+ },
+ "notes": {
+  "2": [
+   {
+    "type": "tip",
+    "text": "Мета — загальний огляд. Не намагайся запам'ятати всі деталі — спочатку лише структура."
+   }
+  ],
+  "4": [
+   {
+    "type": "tip",
+    "text": "Питання на іспиті: \"що організація SHALL робити згідно клаузи X?\" — фокусуйся на обов'язкових вимогах (shall vs should)."
+   }
+  ],
+  "5": [
+   {
+    "type": "tip",
+    "text": "Не треба знати всі 93 контролі напам'ять — важлива логіка: який контроль до якого ризику."
+   }
+  ],
+  "9": [
+   {
+    "type": "note",
+    "text": "Твій IAM досвід = CC6 (logical access controls). Це серцевина Security критерію SOC 2."
+   }
   ]
  }
 };

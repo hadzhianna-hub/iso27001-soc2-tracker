@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>ISO 27001 + SOC 2 + AI Governance — Трекер прогресу</title>
 <link rel="icon" href="data:,">
 <style>
@@ -126,10 +127,45 @@
   footer{text-align:center;color:var(--text-dim);font-size:.78rem;margin-top:50px;padding-top:20px;border-top:1px solid var(--border);}
   footer button{background:none;border:1px solid var(--border);color:var(--text-dim);border-radius:8px;padding:5px 12px;font-size:.75rem;cursor:pointer;margin-top:10px;}
   footer button:hover{border-color:var(--red);color:var(--red);}
+
+  #lockScreen{
+    position:fixed;inset:0;z-index:200;
+    background:#0b0f19;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+  }
+  #lockScreen .box{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:28px 26px;max-width:340px;width:100%;text-align:center;box-shadow:var(--shadow);
+  }
+  #lockScreen h2{font-size:1.05rem;margin:0 0 6px;}
+  #lockScreen p{color:var(--text-dim);font-size:.82rem;margin:0 0 18px;}
+  #lockScreen input{
+    width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;
+    padding:10px 12px;color:var(--text);font-size:.95rem;margin-bottom:10px;text-align:center;
+  }
+  #lockScreen input:focus{outline:none;border-color:var(--accent);}
+  #lockScreen button{
+    width:100%;background:var(--accent);border:none;color:#fff;border-radius:10px;
+    padding:10px 12px;font-size:.9rem;font-weight:600;cursor:pointer;
+  }
+  #lockScreen .err{color:var(--red);font-size:.78rem;height:16px;margin-top:8px;}
+  body.locked #appRoot{display:none;}
 </style>
 </head>
-<body>
+<body class="locked">
 
+<div id="lockScreen">
+  <div class="box">
+    <h2>Трекер прогресу</h2>
+    <p>Введи пароль, щоб переглянути план</p>
+    <input type="password" id="pwInput" placeholder="Пароль" autocomplete="off">
+    <button onclick="tryUnlock()">Увійти</button>
+    <div class="err" id="pwErr"></div>
+  </div>
+</div>
+
+<div id="appRoot">
 <header class="top">
   <div class="inner">
     <div class="title-row">
@@ -181,9 +217,42 @@
     <button onclick="resetProgress()">Скинути прогрес</button>
   </footer>
 </div>
+</div>
 
 <script src="data.js"></script>
 <script>
+// NOTE: this is a client-side passphrase gate for casual privacy only
+// (keeps the URL out of search engines and blocks random visitors).
+// Anyone who views the page source can read the passphrase hash logic —
+// it is not real security. For real access control the repo would need
+// to be private on a paid GitHub plan.
+const LOCK_KEY = 'iso27001-soc2-tracker-unlocked-v1';
+const REAL_PASS_HASH = '1b6acda010cbfe629c86dc54d4682516e4eaf51b94041d222376551878d14383';
+
+async function sha256(text){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function tryUnlock(){
+  const val = document.getElementById('pwInput').value;
+  const hash = await sha256(val);
+  if(hash === REAL_PASS_HASH){
+    localStorage.setItem(LOCK_KEY, '1');
+    document.body.classList.remove('locked');
+  } else {
+    document.getElementById('pwErr').textContent = 'Невірний пароль';
+  }
+}
+
+document.getElementById('pwInput').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') tryUnlock();
+});
+
+if(localStorage.getItem(LOCK_KEY) === '1'){
+  document.body.classList.remove('locked');
+}
+
 const STORAGE_KEY = 'iso27001-soc2-tracker-progress-v1';
 let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 
@@ -204,15 +273,16 @@ function ensureUrl(u){
   return 'https://' + u;
 }
 
+const PHASE_NAMES = ['ISO 27001 Foundation', 'SOC 2', 'GRC + AI Governance'];
+const PHASE_WEEKS = PLAN.meta.phases.map(row => row[1].split('-').map(n => parseInt(n, 10)));
+
 function phaseOfWeek(w){
   const n = parseInt(w, 10);
-  if(n <= 4) return 0;
-  if(n <= 7) return 1;
-  return 2;
+  for(let i = 0; i < PHASE_WEEKS.length; i++){
+    if(n >= PHASE_WEEKS[i][0] && n <= PHASE_WEEKS[i][1]) return i;
+  }
+  return PHASE_WEEKS.length - 1;
 }
-
-const PHASE_NAMES = ['ISO 27001 Foundation', 'SOC 2', 'GRC + AI Governance'];
-const PHASE_WEEKS = [[1,4],[5,7],[8,10]];
 
 function allDayIds(){
   const ids = [];
@@ -285,8 +355,11 @@ function render(){
     card.className = 'week-card';
     card.id = 'week-'+w.week;
 
-    const tip = PLAN.tips[w.week] ? `<div class="tip"><b>Порада:</b> ${PLAN.tips[w.week]}</div>` : '';
-    const keyNote = (w.week === '5' && PLAN.keyLinkNote) ? `<div class="tip"><b>Зв'язок:</b> ${PLAN.keyLinkNote.replace("Ключовий зв'язок: ", '')}</div>` : '';
+    const weekNotes = (PLAN.notes && PLAN.notes[w.week]) ? PLAN.notes[w.week] : [];
+    const notesHtml = weekNotes.map(n => {
+      const label = n.type === 'note' ? "Зв'язок" : 'Порада';
+      return `<div class="tip"><b>${label}:</b> ${n.text}</div>`;
+    }).join('');
 
     const daysHtml = w.days.map((d,i) => {
       const id = 'day_'+w.week+'_'+i;
@@ -317,7 +390,7 @@ function render(){
         </div>
       </div>
       <div class="week-body"><div class="week-body-inner">
-        ${tip}${keyNote}
+        ${notesHtml}
         ${daysHtml}
       </div></div>
     `;
