@@ -1,11 +1,15 @@
 const PLAN = {
  "meta": {
   "title": "ISO 27001 Foundation + SOC 2 + AI Governance",
-  "subtitle": "15 тижнів навчання",
+  "subtitle": "18 тижнів навчання (тимчасово 1 год/тиждень до 4 вересня)",
   "overview": [
    [
     "Тривалість",
-    "15 тижнів (3 серпня 2026 — 15 листопада 2026)"
+    "18 тижнів (3 серпня 2026 — 6 грудня 2026)"
+   ],
+   [
+    "Тимчасовий темп",
+    "1 год/тиждень (1 заняття) до 4 вересня 2026 — тижні 1–5. Далі — стандартні 3 заняття/тиждень"
    ],
    [
     "Навантаження",
@@ -31,19 +35,19 @@ const PLAN = {
   "phases": [
    [
     "1 — ISO 27001",
-    "1-7",
+    "1-10",
     "Candidate Handbook, клаузи 4–10, Annex A, пробні тести",
     "Здача іспиту Foundation"
    ],
    [
     "2 — SOC 2",
-    "8-11",
+    "11-14",
     "TSC, Common Criteria, Access Controls, участь у проєкті",
     "Роль у SOC 2 підготовці"
    ],
    [
     "3 — GRC + AI",
-    "12-15",
+    "15-18",
     "NIST CSF, EU AI Act, ISO 42001, NIST AI RMF",
     "AI Governance базис"
    ]
@@ -131,12 +135,13 @@ const PLAN = {
    "week": "1",
    "dates": "3 серп - 9 серп",
    "title": "ISO 27001 Foundation",
-   "subtitle": "PECB Candidate Handbook Foundation · CIA triad, ISMS, терміни ISO 27000 · Сімейство ISO 27000 (27001, 27002, 27003, 27005)",
+   "subtitle": "PECB Candidate Handbook Foundation",
    "days": [
     {
      "day": "Заняття 1",
      "title": "PECB Candidate Handbook Foundation",
      "subtitle": "Вивчи структуру іспиту, домени, правила складання",
+     "content": "Формат іспиту PECB ISO/IEC 27001 Foundation (звір точні цифри на сторінці курсу — PECB іноді їх оновлює):\n• Тип питань: multiple choice.\n• Орієнтовно 40 питань, ~1 година.\n• Open-book — можна користуватись роздруківками/нотатками, але не інтернетом.\n• Прохідний бал: 70%.\n• Складається онлайн через PECB proctoring або в акредитованому центрі.\n\nЩо перевіряють (домени):\n1. Базові концепції інформаційної безпеки (CIA-тріада, ризик, актив, вразливість, загроза).\n2. Структура та призначення ISO/IEC 27001 і сімейства ISO 27000.\n3. Вимоги стандарту — клаузи 4–10 (контекст, лідерство, планування, підтримка, операції, оцінка результатів, покращення).\n4. Annex A — категорії заходів контролю (organizational, people, physical, technological).\n5. Основи сертифікаційного процесу (аудит стадії 1/2, наглядові аудити).\n\nЯк готуватись: спочатку прочитати офіційний Candidate Handbook по діагоналі, щоб зрозуміти структуру іспиту, потім вертатись до нього вже предметно під час повторення.",
      "links": [
       {
        "label": "Candidate Handbook PDF",
@@ -147,11 +152,20 @@ const PLAN = {
        "url": "pecb.com/en/education-and-certification-for-individuals/iso-iec-27001/iso-iec-27001-foundation"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "2",
+   "dates": "10 серп - 16 серп",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "CIA triad, ISMS, терміни ISO 27000",
+   "days": [
     {
      "day": "Заняття 2",
      "title": "CIA triad, ISMS, терміни ISO 27000",
      "subtitle": "Confidentiality / Integrity / Availability — офіційні визначення",
+     "content": "CIA-тріада — три базові властивості, які захищає інформаційна безпека:\n• Confidentiality (конфіденційність) — інформація доступна лише тим, хто має на це право.\n• Integrity (цілісність) — інформація точна, повна і не змінена без дозволу.\n• Availability (доступність) — інформація і системи доступні уповноваженим користувачам, коли потрібно.\n\nISMS (Information Security Management System) — система управління інформаційною безпекою: не один документ, а сукупність політик, процедур, ролей і процесів, які організація впроваджує, щоб системно керувати ризиками інформаційної безпеки (а не latуково \"поставити антивірус і забути\").\n\nКлючові терміни, які треба знати напам'ять:\n• Asset (актив) — усе, що має цінність для організації (дані, обладнання, репутація).\n• Threat (загроза) — потенційна причина небажаної події.\n• Vulnerability (вразливість) — слабкість, яку загроза може використати.\n• Risk (ризик) — імовірність × вплив реалізації загрози через вразливість.\n• Control (захід контролю) — міра, що знижує ризик.\n• Residual risk (залишковий ризик) — ризик, що залишається після застосування контролів.\n\nISMS будується за циклом PDCA: Plan (спланувати) → Do (виконати) → Check (перевірити) → Act (покращити) — постійне вдосконалення, а не одноразовий проєкт.",
      "links": [
       {
        "label": "ISO 27000 Glossary (офіційно)",
@@ -162,11 +176,20 @@ const PLAN = {
        "url": "youtube.com/results?search_query=ISO+27001+foundation+ISMS+introduction"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "3",
+   "dates": "17 серп - 23 серп",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Сімейство ISO 27000 (27001, 27002, 27003, 27005)",
+   "days": [
     {
      "day": "Заняття 3",
      "title": "Сімейство ISO 27000 (27001, 27002, 27003, 27005)",
      "subtitle": "Що для чого — логіка зв'язків між стандартами",
+     "content": "Сімейство стандартів ISO/IEC 27000 — це не один документ, а набір взаємопов'язаних стандартів, кожен зі своєю роллю:\n\n• ISO/IEC 27000 — огляд і словник термінів. Точка входу: тут визначення всіх понять, які використовують інші стандарти сімейства.\n\n• ISO/IEC 27001 — сам стандарт з вимогами. Єдиний у сімействі, на відповідність якому можна сертифікуватися. Визначає, ЩО організація повинна робити (клаузи 4–10) і містить Annex A — перелік можливих заходів контролю.\n\n• ISO/IEC 27002 — практичний посібник із заходів контролю. Пояснює, ЯК саме реалізувати кожен контроль з Annex A 27001. Не сертифікується сам по собі — це довідник-доповнення.\n\n• ISO/IEC 27003 — керівництво з впровадження ISMS. Практичні поради, як пройти шлях від нуля до робочої ISMS.\n\n• ISO/IEC 27005 — керівництво з управління ризиками інформаційної безпеки. Деталізує, як проводити оцінку та обробку ризиків, які згадані в клаузі 6.1 стандарту 27001.\n\nМнемоніка: 27001 = вимоги (що і чи є сертифікація), 27002 = як саме (guidance по контролях), 27003 = як впровадити систему, 27005 = як рахувати ризики, 27000 = словник для всього іншого.",
      "links": [
       {
        "label": "ISO 27000 family overview",
@@ -181,10 +204,10 @@ const PLAN = {
    ]
   },
   {
-   "week": "2",
-   "dates": "10 серп - 16 серп",
+   "week": "4",
+   "dates": "24 серп - 30 серп",
    "title": "ISO 27001 Foundation",
-   "subtitle": "Udemy: ISO 27001 for busy learners (2 год) · Flashcards + власний конспект · Клауза 4 — Context of the organization",
+   "subtitle": "Udemy: ISO 27001 for busy learners (2 год)",
    "days": [
     {
      "day": "Заняття 1",
@@ -200,7 +223,15 @@ const PLAN = {
        "url": "udemy.com/course/isoiec-27001-information-security-management-system/"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "5",
+   "dates": "31 серп - 6 вер",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Flashcards + власний конспект",
+   "days": [
     {
      "day": "Заняття 2",
      "title": "Flashcards + власний конспект",
@@ -211,7 +242,15 @@ const PLAN = {
        "url": "quizlet.com/search?query=ISO+27001+foundation&type=sets"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "6",
+   "dates": "7 вер - 13 вер",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Клауза 4 — Context of the organization · Клауза 5 + 6 — Leadership + Planning · Клауза 7 + 8 — Support + Operation",
+   "days": [
     {
      "day": "Заняття 3",
      "title": "Клауза 4 — Context of the organization",
@@ -226,15 +265,7 @@ const PLAN = {
        "url": "youtube.com/results?search_query=ISO+27001+clause+4+context+organization"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "3",
-   "dates": "17 серп - 23 серп",
-   "title": "ISO 27001 Foundation",
-   "subtitle": "Клауза 5 + 6 — Leadership + Planning · Клауза 7 + 8 — Support + Operation · Клауза 9 + 10 — Performance + Improvement",
-   "days": [
+    },
     {
      "day": "Заняття 1",
      "title": "Клауза 5 + 6 — Leadership + Planning",
@@ -268,7 +299,15 @@ const PLAN = {
        "url": "advisera.com/27001academy/iso-27001-clause-8-operation/"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "7",
+   "dates": "14 вер - 20 вер",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Клауза 9 + 10 — Performance + Improvement · Перший пробний тест · Annex A — структура (2022 vs 2013)",
+   "days": [
     {
      "day": "Заняття 3",
      "title": "Клауза 9 + 10 — Performance + Improvement",
@@ -283,15 +322,7 @@ const PLAN = {
        "url": "advisera.com/27001academy/iso-27001-clause-10-improvement/"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "4",
-   "dates": "24 серп - 30 серп",
-   "title": "ISO 27001 Foundation",
-   "subtitle": "Перший пробний тест · Annex A — структура (2022 vs 2013) · A.5 Organizational + A.6 People controls",
-   "days": [
+    },
     {
      "day": "Заняття 1",
      "title": "Перший пробний тест",
@@ -325,7 +356,15 @@ const PLAN = {
        "url": "youtube.com/results?search_query=ISO+27001+2022+Annex+A+changes"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "8",
+   "dates": "21 вер - 27 вер",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "A.5 Organizational + A.6 People controls · A.7 Physical + A.8 Technological controls · Risk assessment + risk treatment",
+   "days": [
     {
      "day": "Заняття 3",
      "title": "A.5 Organizational + A.6 People controls",
@@ -340,15 +379,7 @@ const PLAN = {
        "url": "isms.online/iso-27001/annex-a/6-people-controls/"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "5",
-   "dates": "31 серп - 6 вер",
-   "title": "ISO 27001 Foundation",
-   "subtitle": "A.7 Physical + A.8 Technological controls · Risk assessment + risk treatment · Другий пробний тест з таймером",
-   "days": [
+    },
     {
      "day": "Заняття 1",
      "title": "A.7 Physical + A.8 Technological controls",
@@ -382,7 +413,15 @@ const PLAN = {
        "url": "youtube.com/results?search_query=ISO+27001+risk+treatment+options"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "9",
+   "dates": "28 вер - 4 жовт",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Другий пробний тест з таймером · Повторення слабких клауз · Підготовка open-book матеріалів",
+   "days": [
     {
      "day": "Заняття 3",
      "title": "Другий пробний тест з таймером",
@@ -397,15 +436,7 @@ const PLAN = {
        "url": "udemy.com/course/iso-27001-foundation-practice-test-p/"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "6",
-   "dates": "7 вер - 13 вер",
-   "title": "ISO 27001 Foundation",
-   "subtitle": "Повторення слабких клауз · Підготовка open-book матеріалів · Фінальний пробний іспит ×2",
-   "days": [
+    },
     {
      "day": "Заняття 1",
      "title": "Повторення слабких клауз",
@@ -435,7 +466,15 @@ const PLAN = {
        "url": "identityunderground.wordpress.com/2024/04/24/note-to-self-pecb-exam-references-preparation-guidance/"
       }
      ]
-    },
+    }
+   ]
+  },
+  {
+   "week": "10",
+   "dates": "5 жовт - 11 жовт",
+   "title": "ISO 27001 Foundation",
+   "subtitle": "Фінальний пробний іспит ×2 · ISO 27000 Glossary — фінальний огляд · 🎯 ІСПИТ або відпочинок",
+   "days": [
     {
      "day": "Заняття 3",
      "title": "Фінальний пробний іспит ×2",
@@ -450,15 +489,7 @@ const PLAN = {
        "url": "quizlet.com/search?query=ISO+27001+foundation&type=sets"
       }
      ]
-    }
-   ]
-  },
-  {
-   "week": "7",
-   "dates": "14 вер - 20 вер",
-   "title": "ISO 27001 Foundation",
-   "subtitle": "ISO 27000 Glossary — фінальний огляд · 🎯 ІСПИТ або відпочинок",
-   "days": [
+    },
     {
      "day": "Заняття 1",
      "title": "ISO 27000 Glossary — фінальний огляд",
@@ -484,8 +515,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "8",
-   "dates": "21 вер - 27 вер",
+   "week": "11",
+   "dates": "12 жовт - 18 жовт",
    "title": "SOC 2",
    "subtitle": "SOC 2 overview: AICPA, TSC, Type I vs Type II · 5 Trust Service Criteria детально · Common Criteria (CC) — Security детально",
    "days": [
@@ -541,8 +572,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "9",
-   "dates": "28 вер - 4 жовт",
+   "week": "12",
+   "dates": "19 жовт - 25 жовт",
    "title": "SOC 2",
    "subtitle": "SOC 2 vs ISO 27001 — глибоке порівняння · Gap assessment — як це робиться · Evidence collection — що збирати і як",
    "days": [
@@ -594,8 +625,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "10",
-   "dates": "5 жовт - 11 жовт",
+   "week": "13",
+   "dates": "26 жовт - 1 лист",
    "title": "SOC 2",
    "subtitle": "Обов'язкові policies для SOC 2 · ⚡ Пропозиція участі у SOC 2 проєкті · Access Control вимоги SOC 2 (CC6)",
    "days": [
@@ -643,8 +674,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "11",
-   "dates": "12 жовт - 18 жовт",
+   "week": "14",
+   "dates": "2 лист - 8 лист",
    "title": "SOC 2",
    "subtitle": "Vendor Management для SOC 2 · Jira проєкт для SOC 2 evidence tracking",
    "days": [
@@ -677,8 +708,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "12",
-   "dates": "19 жовт - 25 жовт",
+   "week": "15",
+   "dates": "9 лист - 15 лист",
    "title": "GRC + AI Governance",
    "subtitle": "GRC framework — що це і навіщо · CompTIA Security+ — Governance & Compliance домен · NIST Cybersecurity Framework огляд",
    "days": [
@@ -730,8 +761,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "13",
-   "dates": "26 жовт - 1 лист",
+   "week": "16",
+   "dates": "16 лист - 22 лист",
    "title": "GRC + AI Governance",
    "subtitle": "EU AI Act — структура і ключові вимоги · ISO 42001 — AI Management System · NIST AI RMF (AI Risk Management Framework)",
    "days": [
@@ -783,8 +814,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "14",
-   "dates": "2 лист - 8 лист",
+   "week": "17",
+   "dates": "23 лист - 29 лист",
    "title": "GRC + AI Governance",
    "subtitle": "AI vendors у контексті SOC 2 + ISO 27001 · Оновлення CV та LinkedIn · Вибір наступної сертифікації",
    "days": [
@@ -832,8 +863,8 @@ const PLAN = {
    ]
   },
   {
-   "week": "15",
-   "dates": "9 лист - 15 лист",
+   "week": "18",
+   "dates": "30 лист - 6 груд",
    "title": "GRC + AI Governance",
    "subtitle": "Ретроспектива 10 тижнів",
    "days": [

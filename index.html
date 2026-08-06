@@ -108,6 +108,9 @@
   .day-links{margin-top:6px;display:flex;flex-wrap:wrap;gap:8px;}
   .day-links a{font-size:.78rem;background:var(--bg);border:1px solid var(--border);padding:3px 9px;border-radius:99px;}
   .day-links a:hover{border-color:var(--accent);text-decoration:none;}
+  .day-notes{margin-top:8px;padding:12px 14px;background:var(--bg);border:1px solid var(--border);border-radius:10px;}
+  .day-notes p{font-size:.85rem;line-height:1.55;color:var(--text-dim);margin:0 0 8px;white-space:pre-wrap;}
+  .day-notes p:last-child{margin-bottom:0;}
 
   .checklist-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
   .cl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;}
@@ -366,6 +369,9 @@ function render(){
       const id = 'day_'+w.week+'_'+i;
       const done = !!state[id];
       const links = d.links.map(l => `<a href="${ensureUrl(l.url)}" target="_blank" rel="noopener">${l.label} ↗</a>`).join('');
+      const contentHtml = d.content
+        ? `<div class="day-notes">${d.content.split('\n').map(line => line ? `<p>${line}</p>` : '').join('')}</div>`
+        : '';
       return `
         <div class="day-item ${done?'done':''}" data-id="${id}">
           <input type="checkbox" ${done?'checked':''} data-id="${id}">
@@ -373,6 +379,7 @@ function render(){
             <div class="day-label">${d.day}</div>
             <div class="day-title">${d.title}</div>
             ${d.subtitle ? `<div class="day-sub">${d.subtitle}</div>` : ''}
+            ${contentHtml}
             ${links ? `<div class="day-links">${links}</div>` : ''}
           </div>
         </div>`;
