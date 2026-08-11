@@ -835,6 +835,10 @@ const PLAN = {
      "subtitle": "Аналог ISO 27001 для AI — структура, вимоги, зв'язок з 27001",
      "links": [
       {
+       "label": "Advisera: ISO 42001 Foundations (безкоштовний курс)",
+       "url": "advisera.com/training/iso-42001-foundations-course/"
+      },
+      {
        "label": "ISO 42001 офіційна сторінка",
        "url": "iso.org/standard/81230.html"
       },
@@ -909,6 +913,18 @@ const PLAN = {
       {
        "label": "PECB: ISO 42001",
        "url": "pecb.com/en/education-and-certification-for-individuals/iso-iec-42001"
+      },
+      {
+       "label": "Advisera: ISO 42001 Lead Implementer (безкоштовні відео)",
+       "url": "advisera.com/training/iso-42001-lead-implementer-course/"
+      },
+      {
+       "label": "Advisera: ISO 42001 Lead Auditor (безкоштовні відео)",
+       "url": "advisera.com/training/iso-42001-lead-auditor-course/"
+      },
+      {
+       "label": "Advisera: ISO 42001 Internal Auditor (безкоштовні відео)",
+       "url": "advisera.com/training/iso-42001-internal-auditor-course/"
       }
      ],
      "content": "Огляд логічних наступних кроків після ISO 27001 Foundation, з урахуванням твого профілю (Agile Coach + Jira Admin + IAM):\n\n• ISO/IEC 27001 Lead Implementer (PECB) — логічне продовження: Foundation дає розуміння стандарту, Lead Implementer вчить ВПРОВАДЖУВАТИ ISMS з нуля. Сильний вибір, якщо кар'єрна ціль — GRC Analyst / ISMS Manager, і природне продовження щойно пройденого курсу.\n\n• ISO/IEC 27001 Lead Auditor (PECB) — альтернатива Lead Implementer: фокус на аудиті чужих систем, а не побудові власної. Варто обирати, якщо цікавить кар'єра у консалтингу/аудиті, а не всередині однієї організації.\n\n• CompTIA Security+ — ширший, менш ISO-специфічний технічний фундамент з кібербезпеки. Хороший вибір, якщо хочеться закрити прогалини в загальнотехнічних знаннях (мережі, криптографія, threat management), яких ISO 27001 Foundation не покриває глибоко.\n\n• ISACA CISA (Certified Information Systems Auditor) — авторитетна, впізнавана сертифікація саме для аудиту й GRC-кар'єри, часто вимога для позицій GRC Analyst/Manager у великих організаціях. Складніша й вимагає підтвердженого досвіду роботи для повного статусу CISA.\n\n• ISO/IEC 42001 (Lead Implementer/Auditor) — найновіший і найбільш перспективний вибір з огляду на швидке зростання попиту на AI Governance спеціалістів; поки що ринок цієї експертизи малий, тому раннє входження — конкурентна перевага.\n\nРекомендація з урахуванням кар'єрного треку в трекері (GRC Analyst / AI Governance Officer): найлогічніший наступний крок — ISO 27001 Lead Implementer (поглиблює щойно здобуту базу) АБО ISO 42001 (відкриває нішу AI Governance, де конкуренція поки що низька)."
